@@ -1,0 +1,11 @@
+<?php
+class MergeNames
+{
+    public static function unique_names($array1, $array2)
+    {
+        return array_unique(array_merge(array_intersect($array1, $array2),array_diff($array1, $array2),array_diff($array2, $array1)));
+    }
+}
+
+$names = MergeNames::unique_names(['Ava', 'Emma', 'Olivia'], ['Olivia', 'Sophia', 'Emma']);
+echo join(', ', $names); // should print Emma, Olivia, Ava, Sophia
